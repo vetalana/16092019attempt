@@ -1,28 +1,44 @@
 package wiki;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
-public class SearchWikiTest extends TestBase{
-    WebDriver driver;
+public class SearchWikiTest extends TestBase {
+
     @Test
-    public void SearchWiki() throws InterruptedException {
-        driver=new ChromeDriver();
-        //open site:
-        driver.get("https://en.wikipedia.org");
+    public void SearchWikiTrafford() throws InterruptedException {
+
         //type word "Trafford":
-        driver.findElement(By.name("search")).click();
+        click(By.name("search"));
         driver.findElement(By.name("search")).clear();
         driver.findElement(By.name("search")).sendKeys("Trafford");
-        driver.findElement(By.name("go")).click();
+
+        //start search
+        click(By.name("go"));
+
         //pause
         Thread.sleep(5000);
-        //exit
-        driver.quit();
-
     }
 
+    @Test
+    public void searchWikiTestIMF() throws InterruptedException {
+        //type word IMF
+        click(By.name("search"));
+        driver.findElement(By.name("search")).clear();
+        driver.findElement(By.name("search")).sendKeys("IMF");
+
+        //start search
+        click(By.name("go"));
+
+        //pause
+        Thread.sleep(5000);
+
+        //exit
+        driver.quit();
+    }
+
+
 }
+
+
 

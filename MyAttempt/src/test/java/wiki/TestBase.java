@@ -6,12 +6,17 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
+import java.util.concurrent.TimeUnit;
+
 public class TestBase {
     WebDriver driver;
 
     @BeforeClass
     public void setUp() {
         driver = new ChromeDriver();
+        //add default wait for WebElement
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
         //open site
         driver.get("https://en.wikipedia.org");
     }
